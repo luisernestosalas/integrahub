@@ -9,13 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#08080d;--ink2:#141420;--ink3:#1e1e2c;
-  --paper:#f0efe8;--paper2:#e6e4dc;--text:#08080d;
-  --muted:#6b6b7e;--muted2:#9e9eae;
-  --volt:#c6ff00;--volt2:#a8e000;--volt-dim:rgba(198,255,0,0.12);
-  --sans:'Bricolage Grotesque',sans-serif;--mono:'JetBrains Mono',monospace;
-}
+:root{--ink:#08080d;--ink2:#141420;--ink3:#1e1e2c;--paper:#f0efe8;--paper2:#e6e4dc;--text:#08080d;--muted:#6b6b7e;--muted2:#9e9eae;--volt:#c6ff00;--volt2:#a8e000;--volt-dim:rgba(198,255,0,0.12);--sans:'Bricolage Grotesque',sans-serif;--mono:'JetBrains Mono',monospace}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--text);overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4}
@@ -170,17 +164,7 @@ footer{padding:1.75rem 2.5rem;border-top:1px solid rgba(8,8,13,.08);background:v
 .footer-links a:hover{color:var(--text)}
 .footer-right{font-size:.75rem;color:var(--muted2)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-@media(max-width:768px){
-  nav{padding:0 1.25rem}.nav-links{display:none}
-  .hero{padding:0 1.25rem 4rem}
-  .problem-strip,.how,.integrations,.flow,.pricing,.testimonials,.cta-section{padding:4rem 1.25rem}
-  .problem-cards,.plans,.test-grid{grid-template-columns:1fr}
-  .flow-track{flex-direction:column}.flow-arrow{display:none}
-  .hero-bottom{flex-direction:column;align-items:flex-start}
-  .signup-form{flex-direction:column;border-radius:16px;padding:12px}
-  .signup-input{padding:4px 0}.signup-btn{border-radius:10px}
-  .early-strip{flex-direction:column;gap:.75rem}
-}
+@media(max-width:768px){nav{padding:0 1.25rem}.nav-links{display:none}.hero{padding:0 1.25rem 4rem}.problem-strip,.how,.integrations,.flow,.pricing,.testimonials,.cta-section{padding:4rem 1.25rem}.problem-cards,.plans,.test-grid{grid-template-columns:1fr}.flow-track{flex-direction:column}.flow-arrow{display:none}.hero-bottom{flex-direction:column;align-items:flex-start}.signup-form{flex-direction:column;border-radius:16px;padding:12px}.signup-input{padding:4px 0}.signup-btn{border-radius:10px}.early-strip{flex-direction:column;gap:.75rem}}
 </style>
 </head>
 <body>
@@ -288,25 +272,9 @@ footer{padding:1.75rem 2.5rem;border-top:1px solid rgba(8,8,13,.08);background:v
     <h2 class="pricing-h2">Empieza gratis. Paga cuando estés lanzado.</h2>
     <p class="pricing-sub">Sin tarjeta de crédito para empezar. Sin sorpresas.</p>
     <div class="plans">
-      <div class="plan">
-        <p class="plan-name">Gratis</p><p class="plan-price">$0 <sub>/ mes</sub></p><p class="plan-desc">Para probar y lanzar tu primer producto</p>
-        <div class="plan-divider"></div>
-        <ul class="plan-features"><li>3 integraciones conectadas</li><li>Análisis de app con IA</li><li>Generador de backend</li><li>1 deploy a Railway</li><li>Encriptación AES-256</li></ul>
-        <a href="#registro" class="plan-cta">Empezar gratis</a>
-      </div>
-      <div class="plan hero-plan">
-        <span class="plan-badge">Más popular</span>
-        <p class="plan-name">Pro</p><p class="plan-price">$19 <sub>/ mes</sub></p><p class="plan-desc">Para builders que ya generan ingresos</p>
-        <div class="plan-divider"></div>
-        <ul class="plan-features"><li>Integraciones ilimitadas</li><li>Proyectos ilimitados</li><li>Deploys ilimitados</li><li>Soporte prioritario</li><li>Nuevas integraciones primero</li><li>Logs de actividad</li></ul>
-        <a href="#registro" class="plan-cta">Empezar con Pro</a>
-      </div>
-      <div class="plan">
-        <p class="plan-name">Agencia</p><p class="plan-price">$79 <sub>/ mes</sub></p><p class="plan-desc">Para equipos que lanzan varios productos</p>
-        <div class="plan-divider"></div>
-        <ul class="plan-features"><li>Todo de Pro</li><li>Hasta 10 miembros de equipo</li><li>Dashboard compartido</li><li>API de acceso para automatizar</li><li>Soporte con SLA</li></ul>
-        <a href="#registro" class="plan-cta">Contactar →</a>
-      </div>
+      <div class="plan"><p class="plan-name">Gratis</p><p class="plan-price">$0 <sub>/ mes</sub></p><p class="plan-desc">Para probar y lanzar tu primer producto</p><div class="plan-divider"></div><ul class="plan-features"><li>3 integraciones conectadas</li><li>Análisis de app con IA</li><li>Generador de backend</li><li>1 deploy a Railway</li><li>Encriptación AES-256</li></ul><a href="#registro" class="plan-cta">Empezar gratis</a></div>
+      <div class="plan hero-plan"><span class="plan-badge">Más popular</span><p class="plan-name">Pro</p><p class="plan-price">$19 <sub>/ mes</sub></p><p class="plan-desc">Para builders que ya generan ingresos</p><div class="plan-divider"></div><ul class="plan-features"><li>Integraciones ilimitadas</li><li>Proyectos ilimitados</li><li>Deploys ilimitados</li><li>Soporte prioritario</li><li>Nuevas integraciones primero</li><li>Logs de actividad</li></ul><a href="#registro" class="plan-cta">Empezar con Pro</a></div>
+      <div class="plan"><p class="plan-name">Agencia</p><p class="plan-price">$79 <sub>/ mes</sub></p><p class="plan-desc">Para equipos que lanzan varios productos</p><div class="plan-divider"></div><ul class="plan-features"><li>Todo de Pro</li><li>Hasta 10 miembros de equipo</li><li>Dashboard compartido</li><li>API de acceso para automatizar</li><li>Soporte con SLA</li></ul><a href="#registro" class="plan-cta">Contactar →</a></div>
     </div>
     <div class="early-strip">
       <div class="early-strip-icon">🚀</div>
@@ -355,8 +323,8 @@ footer{padding:1.75rem 2.5rem;border-top:1px solid rgba(8,8,13,.08);background:v
 </footer>
 
 <script>
-const SUPABASE_URL  = 'https://ameubkwhvhywazxpeyay.supabase.co';
-const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE';
+const SUPABASE_URL = 'https://ameubkwhvhywazxpeyay.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE';
 
 const io = new IntersectionObserver(entries => {
   entries.forEach((e,i) => {
@@ -375,16 +343,7 @@ function signup(){
   }
   msg.textContent='⏳ Guardando...';
   msg.style.color='rgba(240,239,232,.5)';
-function signup(){
-  const email = document.getElementById('emailInput').value.trim();
-  const msg   = document.getElementById('ctaMsg');
-  if(!email || !email.includes('@')){
-    document.getElementById('emailInput').style.outline='2px solid rgba(255,79,109,.6)';
-    setTimeout(()=>document.getElementById('emailInput').style.outline='',1500);
-    return;
-  }
-  msg.textContent='⏳ Guardando...';
-  msg.style.color='rgba(240,239,232,.5)';
+
   fetch(SUPABASE_URL+'/rest/v1/waitlist',{
     method:'POST',
     headers:{
@@ -401,42 +360,11 @@ function signup(){
         method:'POST',
         headers:{
           'Content-Type':'application/json',
-          'Authorization':'Bearer '+SUPABASE_KEY,
+          'Authorization':'Bearer '+SUPABASE_KEY
         },
         body:JSON.stringify({email})
       });
       msg.textContent='✓ ¡Listo, '+email+'! Revisa tu correo — te enviamos un regalo 🎉';
-      msg.style.color='var(--volt)';
-      document.getElementById('emailInput').value='';
-    } else if(res.status===409){
-      msg.textContent='✓ Ya estás en la lista — te avisamos pronto.';
-      msg.style.color='var(--volt)';
-    } else {
-      msg.textContent='Algo salió mal, intenta de nuevo.';
-      msg.style.color='#ff4f6d';
-    }
-  })
-  .catch(()=>{
-    msg.textContent='Error de conexión, intenta de nuevo.';
-    msg.style.color='#ff4f6d';
-  });
-}
-    msg.textContent='Error de conexión, intenta de nuevo.';
-    msg.style.color='#ff4f6d';
-  });
-}
-    method:'POST',
-    headers:{
-      'Content-Type':'application/json',
-      'apikey': SUPABASE_KEY,
-      'Authorization':'Bearer '+SUPABASE_KEY,
-      'Prefer':'return=minimal'
-    },
-    body: JSON.stringify({ email })
-  })
-  .then(res => {
-    if(res.ok){
-      msg.textContent='✓ ¡Listo, '+email+'! Te avisamos cuando tu cuenta esté activa.';
       msg.style.color='var(--volt)';
       document.getElementById('emailInput').value='';
     } else if(res.status===409){
@@ -458,4 +386,3 @@ document.getElementById('emailInput').addEventListener('keydown',e=>{
 });
 </script>
 </body>
-</html>
