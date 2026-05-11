@@ -10,312 +10,115 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#08080d;
-  --ink2:#141420;
-  --ink3:#1e1e2c;
-  --paper:#f0efe8;
-  --paper2:#e6e4dc;
-  --text:#08080d;
-  --muted:#6b6b7e;
-  --muted2:#9e9eae;
-  --volt:#c6ff00;
-  --volt2:#a8e000;
-  --volt-dim:rgba(198,255,0,0.12);
-  --sans:'Bricolage Grotesque',sans-serif;
-  --mono:'JetBrains Mono',monospace;
+  --ink:#08080d;--ink2:#141420;--ink3:#1e1e2c;
+  --paper:#f0efe8;--paper2:#e6e4dc;--text:#08080d;
+  --muted:#6b6b7e;--muted2:#9e9eae;
+  --volt:#c6ff00;--volt2:#a8e000;--volt-dim:rgba(198,255,0,0.12);
+  --sans:'Bricolage Grotesque',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--text);overflow-x:hidden}
-
-/* ── NOISE TEXTURE ── */
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity:.4;
-}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:58px;
-  background:rgba(240,239,232,0.85);backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(8,8,13,0.08);
-}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:58px;background:rgba(240,239,232,0.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(8,8,13,0.08)}
 .nav-logo{font-weight:800;font-size:1.1rem;letter-spacing:-0.04em;color:var(--text)}
 .nav-logo b{color:var(--ink);background:var(--volt);padding:0 4px;border-radius:3px}
 .nav-links{display:flex;gap:2rem}
 .nav-links a{font-size:.85rem;color:var(--muted);text-decoration:none;font-weight:400;transition:color .15s}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{
-  background:var(--ink);color:var(--paper);border:none;
-  padding:.55rem 1.4rem;border-radius:100px;font-family:var(--sans);
-  font-size:.85rem;font-weight:500;cursor:pointer;text-decoration:none;
-  transition:background .2s,transform .15s;display:inline-block;
-}
+.nav-cta{background:var(--ink);color:var(--paper);border:none;padding:.55rem 1.4rem;border-radius:100px;font-family:var(--sans);font-size:.85rem;font-weight:500;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;display:inline-block}
 .nav-cta:hover{background:#2a2a3a;transform:translateY(-1px)}
-
-/* ── HERO ── */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 2.5rem 5rem;position:relative;overflow:hidden;
-  background:var(--ink);
-}
-
-/* grid */
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:linear-gradient(rgba(240,239,232,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(240,239,232,.04) 1px,transparent 1px);
-  background-size:72px 72px;
-}
-.hero-glow{
-  position:absolute;top:-20%;right:-10%;
-  width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(198,255,0,.12) 0%,transparent 65%);
-  pointer-events:none;
-}
-.hero-glow2{
-  position:absolute;bottom:-15%;left:-5%;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(198,255,0,.06) 0%,transparent 65%);
-  pointer-events:none;
-}
-
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  color:var(--volt);font-size:.72rem;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;
-  margin-bottom:2rem;position:relative;z-index:1;
-  animation:fadeUp .6s ease both;
-}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 5rem;position:relative;overflow:hidden;background:var(--ink)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(240,239,232,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(240,239,232,.04) 1px,transparent 1px);background-size:72px 72px}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(198,255,0,.12) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-15%;left:-5%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(198,255,0,.06) 0%,transparent 65%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--volt);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem;position:relative;z-index:1;animation:fadeUp .6s ease both}
 .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--volt);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-.hero-h1{
-  font-size:clamp(4rem,9vw,8.5rem);font-weight:800;
-  line-height:.95;letter-spacing:-.05em;
-  color:var(--paper);position:relative;z-index:1;
-  animation:fadeUp .7s .08s ease both;
-}
+.hero-h1{font-size:clamp(4rem,9vw,8.5rem);font-weight:800;line-height:.95;letter-spacing:-.05em;color:var(--paper);position:relative;z-index:1;animation:fadeUp .7s .08s ease both}
 .hero-h1 .volt{color:var(--volt)}
-.hero-h1 .strike{
-  text-decoration:line-through;
-  text-decoration-color:var(--volt);
-  text-decoration-thickness:4px;
-  color:rgba(240,239,232,.3);
-}
-
-.hero-bottom{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  margin-top:3rem;position:relative;z-index:1;flex-wrap:wrap;gap:2rem;
-  animation:fadeUp .7s .18s ease both;
-}
-.hero-sub{
-  font-size:1.05rem;color:rgba(240,239,232,.55);
-  font-weight:300;line-height:1.7;max-width:460px;
-}
+.hero-h1 .strike{text-decoration:line-through;text-decoration-color:var(--volt);text-decoration-thickness:4px;color:rgba(240,239,232,.3)}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;position:relative;z-index:1;flex-wrap:wrap;gap:2rem;animation:fadeUp .7s .18s ease both}
+.hero-sub{font-size:1.05rem;color:rgba(240,239,232,.55);font-weight:300;line-height:1.7;max-width:460px}
 .hero-sub strong{color:rgba(240,239,232,.9);font-weight:500}
-
 .hero-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.btn-volt{
-  background:var(--volt);color:var(--ink);border:none;
-  padding:.85rem 2rem;border-radius:100px;font-family:var(--sans);
-  font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;
-  display:inline-flex;align-items:center;gap:8px;
-  transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 4px 28px rgba(198,255,0,.25);
-}
+.btn-volt{background:var(--volt);color:var(--ink);border:none;padding:.85rem 2rem;border-radius:100px;font-family:var(--sans);font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 28px rgba(198,255,0,.25)}
 .btn-volt:hover{background:var(--volt2);transform:translateY(-2px);box-shadow:0 8px 36px rgba(198,255,0,.35)}
-.btn-ghost-light{
-  background:transparent;color:rgba(240,239,232,.6);
-  border:1.5px solid rgba(240,239,232,.15);
-  padding:.85rem 1.6rem;border-radius:100px;font-family:var(--sans);
-  font-size:.9rem;font-weight:400;cursor:pointer;text-decoration:none;
-  transition:border-color .2s,color .2s;display:inline-block;
-}
+.btn-ghost-light{background:transparent;color:rgba(240,239,232,.6);border:1.5px solid rgba(240,239,232,.15);padding:.85rem 1.6rem;border-radius:100px;font-family:var(--sans);font-size:.9rem;font-weight:400;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s;display:inline-block}
 .btn-ghost-light:hover{border-color:rgba(240,239,232,.4);color:var(--paper)}
-
-.hero-proof{
-  display:flex;align-items:center;gap:12px;
-  margin-top:3rem;position:relative;z-index:1;
-  animation:fadeUp .7s .26s ease both;
-  border-top:1px solid rgba(240,239,232,.07);padding-top:2rem;
-}
+.hero-proof{display:flex;align-items:center;gap:12px;margin-top:3rem;position:relative;z-index:1;animation:fadeUp .7s .26s ease both;border-top:1px solid rgba(240,239,232,.07);padding-top:2rem}
 .proof-avatars{display:flex}
-.proof-av{
-  width:30px;height:30px;border-radius:50%;
-  border:2px solid var(--ink);margin-left:-8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.65rem;font-weight:700;color:var(--ink);
-  flex-shrink:0;
-}
+.proof-av{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--ink);flex-shrink:0}
 .proof-av:first-child{margin-left:0}
 .proof-text{font-size:.78rem;color:rgba(240,239,232,.35)}
 .proof-text strong{color:rgba(240,239,232,.7)}
-
-/* scroll indicator */
-.scroll-hint{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  z-index:1;animation:fadeUp .7s .4s ease both;
-}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:1;animation:fadeUp .7s .4s ease both}
 .scroll-hint span{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,239,232,.2)}
-.scroll-arrow{
-  width:20px;height:32px;border:1.5px solid rgba(240,239,232,.15);
-  border-radius:100px;display:flex;justify-content:center;padding-top:5px;
-}
-.scroll-dot{
-  width:4px;height:4px;border-radius:50%;background:var(--volt);
-  animation:scrollDot 1.8s ease infinite;
-}
+.scroll-arrow{width:20px;height:32px;border:1.5px solid rgba(240,239,232,.15);border-radius:100px;display:flex;justify-content:center;padding-top:5px}
+.scroll-dot{width:4px;height:4px;border-radius:50%;background:var(--volt);animation:scrollDot 1.8s ease infinite}
 @keyframes scrollDot{0%{transform:translateY(0);opacity:1}100%{transform:translateY(14px);opacity:0}}
-
-/* ── PROBLEM STRIP ── */
-.problem-strip{
-  background:var(--ink2);padding:4.5rem 2.5rem;
-  border-top:1px solid rgba(240,239,232,.05);
-}
+.problem-strip{background:var(--ink2);padding:4.5rem 2.5rem;border-top:1px solid rgba(240,239,232,.05)}
 .problem-inner{max-width:1000px;margin:0 auto}
-.section-label{
-  font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.8rem;
-}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
 .problem-strip .section-label{color:rgba(240,239,232,.25)}
-.problem-h2{
-  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;
-  letter-spacing:-.04em;line-height:1.1;color:var(--paper);
-  max-width:680px;margin-bottom:3.5rem;
-}
+.problem-h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--paper);max-width:680px;margin-bottom:3.5rem}
 .problem-h2 em{color:var(--volt);font-style:normal}
-
 .problem-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,239,232,.06);border-radius:16px;overflow:hidden}
 .prob-card{background:var(--ink2);padding:2rem}
 .prob-n{font-family:var(--mono);font-size:2.5rem;font-weight:500;color:rgba(240,239,232,.07);line-height:1;margin-bottom:.75rem}
 .prob-card h3{font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:.5rem;letter-spacing:-.02em}
 .prob-card p{font-size:.82rem;color:rgba(240,239,232,.38);font-weight:300;line-height:1.7}
-
-/* ── HOW ── */
 .how{padding:6rem 2.5rem;background:var(--paper)}
 .how-inner{max-width:900px;margin:0 auto}
-.how-h2{
-  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;
-  letter-spacing:-.04em;line-height:1.1;max-width:560px;margin-bottom:4rem;
-}
+.how-h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;max-width:560px;margin-bottom:4rem}
 .how-h2 em{color:var(--ink);border-bottom:3px solid var(--volt);font-style:normal;padding-bottom:2px}
-
 .how-steps{display:flex;flex-direction:column}
-.how-step{
-  display:grid;grid-template-columns:80px 1fr;gap:2rem;
-  padding:2rem 0;border-bottom:1px solid rgba(8,8,13,.08);
-  opacity:0;transform:translateY(18px);
-  transition:opacity .5s,transform .5s;
-}
+.how-step{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid rgba(8,8,13,.08);opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
 .how-step.in{opacity:1;transform:none}
 .how-step:last-child{border-bottom:none}
-.how-n{
-  font-family:var(--mono);font-size:3rem;font-weight:500;
-  color:rgba(8,8,13,.07);line-height:1;padding-top:4px;
-}
+.how-n{font-family:var(--mono);font-size:3rem;font-weight:500;color:rgba(8,8,13,.07);line-height:1;padding-top:4px}
 .how-body h3{font-size:1.2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:.4rem}
 .how-body p{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:480px}
-.how-pill{
-  display:inline-block;margin-top:.75rem;font-size:.7rem;font-weight:600;
-  padding:3px 12px;border-radius:100px;letter-spacing:.04em;
-}
+.how-pill{display:inline-block;margin-top:.75rem;font-size:.7rem;font-weight:600;padding:3px 12px;border-radius:100px;letter-spacing:.04em}
 .pill-volt{background:var(--volt-dim);color:#5a7a00;border:1px solid rgba(198,255,0,.3)}
 .pill-dark{background:rgba(8,8,13,.06);color:var(--muted);border:1px solid rgba(8,8,13,.08)}
-
-/* ── INTEGRATIONS ── */
 .integrations{padding:5rem 2.5rem;background:var(--paper2)}
 .int-inner{max-width:900px;margin:0 auto}
 .int-h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.4rem}
 .int-sub{font-size:.875rem;color:var(--muted);font-weight:300;margin-bottom:2.5rem}
 .int-grid{display:flex;flex-wrap:wrap;gap:8px}
-.int-chip{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--paper);border:1px solid rgba(8,8,13,.1);
-  border-radius:100px;padding:.45rem 1rem;font-size:.85rem;
-  font-weight:500;color:var(--text);cursor:default;
-  transition:border-color .2s,transform .15s,box-shadow .15s;
-}
+.int-chip{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1px solid rgba(8,8,13,.1);border-radius:100px;padding:.45rem 1rem;font-size:.85rem;font-weight:500;color:var(--text);cursor:default;transition:border-color .2s,transform .15s,box-shadow .15s}
 .int-chip:hover{border-color:rgba(8,8,13,.25);transform:translateY(-2px);box-shadow:0 4px 12px rgba(8,8,13,.08)}
 .int-chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.int-chip-req{
-  background:var(--ink);color:var(--paper);border-color:var(--ink);
-}
+.int-chip-req{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .int-chip-req:hover{background:#2a2a3a;border-color:#2a2a3a}
-.int-more{
-  display:inline-flex;align-items:center;gap:8px;
-  background:none;border:1.5px dashed rgba(8,8,13,.2);
-  border-radius:100px;padding:.45rem 1rem;font-size:.85rem;
-  color:var(--muted);cursor:pointer;font-family:var(--sans);
-  transition:border-color .2s,color .2s;
-}
+.int-more{display:inline-flex;align-items:center;gap:8px;background:none;border:1.5px dashed rgba(8,8,13,.2);border-radius:100px;padding:.45rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;font-family:var(--sans);transition:border-color .2s,color .2s}
 .int-more:hover{border-color:var(--ink);color:var(--text)}
-
-/* ── FLOW DIAGRAM ── */
 .flow{padding:5rem 2.5rem;background:var(--ink);overflow:hidden}
 .flow-inner{max-width:900px;margin:0 auto}
-.flow-h2{
-  font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;
-  letter-spacing:-.04em;color:var(--paper);margin-bottom:3rem;
-}
+.flow-h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.04em;color:var(--paper);margin-bottom:3rem}
 .flow-h2 em{color:var(--volt);font-style:normal}
-.flow-track{
-  display:flex;align-items:stretch;gap:0;
-  border:1px solid rgba(240,239,232,.08);border-radius:16px;overflow:hidden;
-}
-.flow-node{
-  flex:1;padding:1.75rem 1.5rem;border-right:1px solid rgba(240,239,232,.06);
-  position:relative;
-}
+.flow-track{display:flex;align-items:stretch;gap:0;border:1px solid rgba(240,239,232,.08);border-radius:16px;overflow:hidden}
+.flow-node{flex:1;padding:1.75rem 1.5rem;border-right:1px solid rgba(240,239,232,.06);position:relative}
 .flow-node:last-child{border-right:none}
 .flow-node-icon{font-size:1.6rem;margin-bottom:.75rem}
 .flow-node-title{font-size:.9rem;font-weight:700;color:var(--paper);margin-bottom:.3rem;letter-spacing:-.02em}
 .flow-node-desc{font-size:.75rem;color:rgba(240,239,232,.35);font-weight:300;line-height:1.6}
-.flow-node-tag{
-  display:inline-block;margin-top:.6rem;
-  font-size:.65rem;font-weight:600;letter-spacing:.06em;
-  padding:2px 8px;border-radius:100px;
-}
+.flow-node-tag{display:inline-block;margin-top:.6rem;font-size:.65rem;font-weight:600;letter-spacing:.06em;padding:2px 8px;border-radius:100px}
 .tag-volt{background:var(--volt-dim);color:#8ab500;border:1px solid rgba(198,255,0,.2)}
 .tag-dim{background:rgba(240,239,232,.05);color:rgba(240,239,232,.3);border:1px solid rgba(240,239,232,.08)}
-.flow-arrow{
-  position:absolute;top:50%;right:-12px;transform:translateY(-50%);
-  width:24px;height:24px;background:var(--ink);border:1px solid rgba(240,239,232,.1);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;color:var(--volt);z-index:2;
-}
-
-/* ── PRICING ── */
+.flow-arrow{position:absolute;top:50%;right:-12px;transform:translateY(-50%);width:24px;height:24px;background:var(--ink);border:1px solid rgba(240,239,232,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--volt);z-index:2}
 .pricing{padding:6rem 2.5rem;background:var(--paper)}
 .pricing-inner{max-width:900px;margin:0 auto}
 .pricing-h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.4rem}
 .pricing-sub{font-size:.9rem;color:var(--muted);font-weight:300;margin-bottom:3rem}
-
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.plan{
-  border:1.5px solid rgba(8,8,13,.1);border-radius:20px;
-  padding:1.75rem;background:var(--paper);
-  transition:border-color .2s,transform .2s,box-shadow .2s;
-}
+.plan{border:1.5px solid rgba(8,8,13,.1);border-radius:20px;padding:1.75rem;background:var(--paper);transition:border-color .2s,transform .2s,box-shadow .2s}
 .plan:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(8,8,13,.08)}
-.plan.hero-plan{
-  background:var(--ink);color:var(--paper);
-  border-color:var(--ink);
-}
+.plan.hero-plan{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .plan.hero-plan:hover{box-shadow:0 12px 36px rgba(8,8,13,.25)}
-.plan-badge{
-  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--volt);color:var(--ink);
-  padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:1.1rem;
-}
+.plan-badge{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--volt);color:var(--ink);padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:1.1rem}
 .plan-name{font-size:1.2rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.2rem}
-.plan-price{
-  font-size:2.8rem;font-weight:800;letter-spacing:-.05em;
-  line-height:1;margin:.5rem 0 .3rem;
-}
+.plan-price{font-size:2.8rem;font-weight:800;letter-spacing:-.05em;line-height:1;margin:.5rem 0 .3rem}
 .plan-price sub{font-size:1rem;font-weight:400;opacity:.5;letter-spacing:0}
 .plan-desc{font-size:.78rem;opacity:.5;font-weight:300;margin-bottom:1.25rem}
 .plan-divider{height:1px;background:rgba(8,8,13,.08);margin:1.25rem 0}
@@ -324,131 +127,63 @@ nav{
 .plan-features li{font-size:.82rem;display:flex;gap:8px;align-items:flex-start;font-weight:300;opacity:.8}
 .plan-features li::before{content:'✓';font-weight:700;flex-shrink:0;opacity:1}
 .plan.hero-plan .plan-features li::before{color:var(--volt)}
-.plan-cta{
-  display:block;text-align:center;margin-top:1.5rem;
-  padding:.75rem;border-radius:100px;font-family:var(--sans);
-  font-size:.875rem;font-weight:600;cursor:pointer;text-decoration:none;
-  transition:all .2s;border:1.5px solid rgba(8,8,13,.15);
-  background:transparent;color:var(--ink);
-}
+.plan-cta{display:block;text-align:center;margin-top:1.5rem;padding:.75rem;border-radius:100px;font-family:var(--sans);font-size:.875rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;border:1.5px solid rgba(8,8,13,.15);background:transparent;color:var(--ink)}
 .plan-cta:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .plan.hero-plan .plan-cta{background:var(--volt);color:var(--ink);border-color:var(--volt)}
 .plan.hero-plan .plan-cta:hover{background:var(--volt2);border-color:var(--volt2)}
-
-.early-strip{
-  margin-top:12px;border:1.5px dashed rgba(8,8,13,.15);border-radius:16px;
-  padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1.25rem;
-}
+.early-strip{margin-top:12px;border:1.5px dashed rgba(8,8,13,.15);border-radius:16px;padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1.25rem}
 .early-strip-icon{font-size:1.8rem;flex-shrink:0}
 .early-strip h3{font-size:1rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.2rem}
 .early-strip p{font-size:.78rem;color:var(--muted);font-weight:300}
-.spots-pill{
-  display:inline-block;background:var(--ink);color:var(--paper);
-  font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:100px;
-  margin-left:6px;vertical-align:middle;
-}
-
-/* ── TESTIMONIALS ── */
+.spots-pill{display:inline-block;background:var(--ink);color:var(--paper);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle}
 .testimonials{padding:5rem 2.5rem;background:var(--paper2)}
 .test-inner{max-width:900px;margin:0 auto}
 .test-h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.04em;margin-bottom:2.5rem}
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.test-card{
-  background:var(--paper);border:1px solid rgba(8,8,13,.08);
-  border-radius:16px;padding:1.5rem;
-}
+.test-card{background:var(--paper);border:1px solid rgba(8,8,13,.08);border-radius:16px;padding:1.5rem}
 .test-stars{color:var(--ink);font-size:.8rem;margin-bottom:.75rem;letter-spacing:2px}
 .test-quote{font-size:.875rem;line-height:1.7;color:var(--text);margin-bottom:1rem;font-weight:300}
 .test-quote strong{font-weight:600}
 .test-author{display:flex;align-items:center;gap:10px}
-.test-av{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.75rem;font-weight:700;color:var(--ink);
-}
+.test-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--ink)}
 .test-name{font-size:.8rem;font-weight:600}
 .test-handle{font-size:.72rem;color:var(--muted)}
-
-/* ── CTA ── */
-.cta-section{
-  padding:7rem 2.5rem;background:var(--ink);
-  text-align:center;position:relative;overflow:hidden;
-}
-.cta-grid{
-  position:absolute;inset:0;
-  background-image:linear-gradient(rgba(240,239,232,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(240,239,232,.03) 1px,transparent 1px);
-  background-size:60px 60px;
-}
-.cta-glow{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(198,255,0,.07) 0%,transparent 70%);
-}
+.cta-section{padding:7rem 2.5rem;background:var(--ink);text-align:center;position:relative;overflow:hidden}
+.cta-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(240,239,232,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(240,239,232,.03) 1px,transparent 1px);background-size:60px 60px}
+.cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(198,255,0,.07) 0%,transparent 70%)}
 .cta-inner{position:relative;z-index:1;max-width:620px;margin:0 auto}
-.cta-h2{
-  font-size:clamp(2.5rem,6vw,5rem);font-weight:800;
-  letter-spacing:-.05em;line-height:.95;color:var(--paper);
-  margin-bottom:1rem;
-}
+.cta-h2{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;letter-spacing:-.05em;line-height:.95;color:var(--paper);margin-bottom:1rem}
 .cta-h2 em{color:var(--volt);font-style:italic}
 .cta-sub{font-size:.95rem;color:rgba(240,239,232,.4);font-weight:300;margin-bottom:2.5rem}
-
-.signup-form{
-  display:flex;gap:8px;max-width:440px;margin:0 auto;
-  background:rgba(240,239,232,.06);border:1px solid rgba(240,239,232,.1);
-  border-radius:100px;padding:6px 6px 6px 22px;
-}
-.signup-input{
-  flex:1;background:transparent;border:none;outline:none;
-  font-family:var(--sans);font-size:.9rem;color:var(--paper);
-}
+.signup-form{display:flex;gap:8px;max-width:440px;margin:0 auto;background:rgba(240,239,232,.06);border:1px solid rgba(240,239,232,.1);border-radius:100px;padding:6px 6px 6px 22px}
+.signup-input{flex:1;background:transparent;border:none;outline:none;font-family:var(--sans);font-size:.9rem;color:var(--paper)}
 .signup-input::placeholder{color:rgba(240,239,232,.25)}
-.signup-btn{
-  background:var(--volt);color:var(--ink);border:none;
-  padding:.65rem 1.5rem;border-radius:100px;font-family:var(--sans);
-  font-size:.875rem;font-weight:700;cursor:pointer;white-space:nowrap;
-  transition:background .2s;
-}
+.signup-btn{background:var(--volt);color:var(--ink);border:none;padding:.65rem 1.5rem;border-radius:100px;font-family:var(--sans);font-size:.875rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s}
 .signup-btn:hover{background:var(--volt2)}
 .cta-fine{font-size:.72rem;color:rgba(240,239,232,.2);margin-top:1rem}
 .cta-msg{font-size:.82rem;color:var(--volt);margin-top:.75rem;min-height:1.2rem}
-
-/* ── FOOTER ── */
-footer{
-  padding:1.75rem 2.5rem;
-  border-top:1px solid rgba(8,8,13,.08);background:var(--paper);
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-}
+footer{padding:1.75rem 2.5rem;border-top:1px solid rgba(8,8,13,.08);background:var(--paper);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-weight:800;font-size:.95rem;letter-spacing:-.03em}
 .footer-logo b{background:var(--volt);padding:0 3px;border-radius:2px}
 .footer-links{display:flex;gap:1.5rem}
 .footer-links a{font-size:.78rem;color:var(--muted);text-decoration:none}
 .footer-links a:hover{color:var(--text)}
 .footer-right{font-size:.75rem;color:var(--muted2)}
-
-/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-
-/* ── MOBILE ── */
 @media(max-width:768px){
-  nav{padding:0 1.25rem}
-  .nav-links{display:none}
+  nav{padding:0 1.25rem}.nav-links{display:none}
   .hero{padding:0 1.25rem 4rem}
   .problem-strip,.how,.integrations,.flow,.pricing,.testimonials,.cta-section{padding:4rem 1.25rem}
   .problem-cards,.plans,.test-grid{grid-template-columns:1fr}
-  .flow-track{flex-direction:column}
-  .flow-arrow{display:none}
+  .flow-track{flex-direction:column}.flow-arrow{display:none}
   .hero-bottom{flex-direction:column;align-items:flex-start}
   .signup-form{flex-direction:column;border-radius:16px;padding:12px}
-  .signup-input{padding:4px 0}
-  .signup-btn{border-radius:10px}
+  .signup-input{padding:4px 0}.signup-btn{border-radius:10px}
   .early-strip{flex-direction:column;gap:.75rem}
 }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo">íntegra<b>hub</b></div>
   <div class="nav-links">
@@ -459,38 +194,19 @@ footer{
   <a href="#registro" class="nav-cta">Empezar gratis →</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-
-  <div class="hero-eyebrow">
-    <span class="eyebrow-dot"></span>
-    Para vibe coders · builders con IA · founders sin DevOps
-  </div>
-
-  <h1 class="hero-h1">
-    Tu app está<br>
-    <span class="strike">atascada.</span><br>
-    <span class="volt">Lánzala.</span>
-  </h1>
-
+  <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Para vibe coders · builders con IA · founders sin DevOps</div>
+  <h1 class="hero-h1">Tu app está<br><span class="strike">atascada.</span><br><span class="volt">Lánzala.</span></h1>
   <div class="hero-bottom">
-    <p class="hero-sub">
-      Construiste algo con IA pero <strong>el deploy te bloquea</strong>.
-      IntégraHub conecta tus integraciones, genera tu backend
-      y lo despliega en Railway — sin terminal, sin DevOps, sin freelancer.
-    </p>
+    <p class="hero-sub">Construiste algo con IA pero <strong>el deploy te bloquea</strong>. IntégraHub conecta tus integraciones, genera tu backend y lo despliega en Railway — sin terminal, sin DevOps, sin freelancer.</p>
     <div class="hero-actions">
-      <a href="#registro" class="btn-volt">
-        Empezar gratis
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <a href="#registro" class="btn-volt">Empezar gratis <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <a href="#how" class="btn-ghost-light">Ver cómo funciona</a>
     </div>
   </div>
-
   <div class="hero-proof">
     <div class="proof-avatars">
       <div class="proof-av" style="background:#c6ff00">AL</div>
@@ -501,178 +217,71 @@ footer{
     </div>
     <p class="proof-text"><strong>+240 builders</strong> lanzaron su app esta semana · Promedio: 18 minutos de configuración</p>
   </div>
-
-  <div class="scroll-hint">
-    <span>scroll</span>
-    <div class="scroll-arrow"><div class="scroll-dot"></div></div>
-  </div>
+  <div class="scroll-hint"><span>scroll</span><div class="scroll-arrow"><div class="scroll-dot"></div></div></div>
 </section>
 
-<!-- PROBLEM -->
 <section class="problem-strip">
   <div class="problem-inner">
     <p class="section-label">El problema real</p>
-    <h2 class="problem-h2">
-      Construiste algo genial.<br>
-      Sigue <em>engavetado.</em>
-    </h2>
+    <h2 class="problem-h2">Construiste algo genial.<br>Sigue <em>engavetado.</em></h2>
     <div class="problem-cards">
-      <div class="prob-card">
-        <div class="prob-n">01</div>
-        <h3>La documentación te aplasta</h3>
-        <p>Stripe tiene 400 páginas de docs. Tú solo quieres cobrar $9/mes a tus usuarios.</p>
-      </div>
-      <div class="prob-card">
-        <div class="prob-n">02</div>
-        <h3>El freelancer cuesta más que lo que generarás</h3>
-        <p>$500–$2000 para conectar APIs que ya existen. No tiene sentido económico.</p>
-      </div>
-      <div class="prob-card">
-        <div class="prob-n">03</div>
-        <h3>La IA te ayuda a construir, no a lanzar</h3>
-        <p>Claude, Cursor, Bolt: perfectos para el código. El deploy sigue siendo tu problema.</p>
-      </div>
+      <div class="prob-card"><div class="prob-n">01</div><h3>La documentación te aplasta</h3><p>Stripe tiene 400 páginas de docs. Tú solo quieres cobrar $9/mes a tus usuarios.</p></div>
+      <div class="prob-card"><div class="prob-n">02</div><h3>El freelancer cuesta más que lo que generarás</h3><p>$500–$2000 para conectar APIs que ya existen. No tiene sentido económico.</p></div>
+      <div class="prob-card"><div class="prob-n">03</div><h3>La IA te ayuda a construir, no a lanzar</h3><p>Claude, Cursor, Bolt: perfectos para el código. El deploy sigue siendo tu problema.</p></div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="how-inner">
     <p class="section-label">Cómo funciona</p>
     <h2 class="how-h2">De "casi lista" a <em>online</em><br>en una tarde</h2>
     <div class="how-steps">
-      <div class="how-step">
-        <div class="how-n">01</div>
-        <div class="how-body">
-          <h3>Sube tu app — Claude la analiza</h3>
-          <p>Arrastra tu HTML, JSX o ZIP. Nuestra IA lee el código, detecta qué integraciones necesita y te da un reporte con exactamente qué falta para producción.</p>
-          <span class="how-pill pill-volt">IA con Claude Sonnet</span>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-n">02</div>
-        <div class="how-body">
-          <h3>Conecta tus servicios con un wizard guiado</h3>
-          <p>Cada campo tiene un "¿Dónde lo encuentro?" con la ruta exacta dentro del dashboard del servicio. Sin abrir Google. Sin saber qué es un webhook.</p>
-          <span class="how-pill pill-dark">Stripe · WhatsApp · OpenAI · Resend · y más</span>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-n">03</div>
-        <div class="how-body">
-          <h3>Generamos tu backend Node.js a medida</h3>
-          <p>Solo con las rutas que necesitas. Encriptación AES-256, autenticación JWT, manejo de errores — todo incluido. Descárgalo o déjanos desplegarlo.</p>
-          <span class="how-pill pill-volt">Código listo para producción</span>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-n">04</div>
-        <div class="how-body">
-          <h3>Deploy automático en Railway — con un clic</h3>
-          <p>Conectamos con la API de Railway, creamos el proyecto, inyectamos tus variables encriptadas y desplegamos. En menos de 2 minutos tienes una URL real con HTTPS.</p>
-          <span class="how-pill pill-volt">Sin GitHub · Sin terminal · Sin DevOps</span>
-        </div>
-      </div>
+      <div class="how-step"><div class="how-n">01</div><div class="how-body"><h3>Sube tu app — Claude la analiza</h3><p>Arrastra tu HTML, JSX o ZIP. Nuestra IA lee el código, detecta qué integraciones necesita y te da un reporte con exactamente qué falta para producción.</p><span class="how-pill pill-volt">IA con Claude Sonnet</span></div></div>
+      <div class="how-step"><div class="how-n">02</div><div class="how-body"><h3>Conecta tus servicios con un wizard guiado</h3><p>Cada campo tiene un "¿Dónde lo encuentro?" con la ruta exacta dentro del dashboard del servicio. Sin abrir Google. Sin saber qué es un webhook.</p><span class="how-pill pill-dark">Stripe · WhatsApp · OpenAI · Resend · y más</span></div></div>
+      <div class="how-step"><div class="how-n">03</div><div class="how-body"><h3>Generamos tu backend Node.js a medida</h3><p>Solo con las rutas que necesitas. Encriptación AES-256, autenticación JWT, manejo de errores — todo incluido. Descárgalo o déjanos desplegarlo.</p><span class="how-pill pill-volt">Código listo para producción</span></div></div>
+      <div class="how-step"><div class="how-n">04</div><div class="how-body"><h3>Deploy automático en Railway — con un clic</h3><p>Conectamos con la API de Railway, creamos el proyecto, inyectamos tus variables encriptadas y desplegamos. En menos de 2 minutos tienes una URL real con HTTPS.</p><span class="how-pill pill-volt">Sin GitHub · Sin terminal · Sin DevOps</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- INTEGRATIONS -->
 <section class="integrations" id="integraciones">
   <div class="int-inner">
     <p class="section-label">Integraciones</p>
     <h2 class="int-h2">Todo lo que tu app necesita</h2>
     <p class="int-sub">Conecta los servicios más usados en minutos. ¿No está el tuyo? Pídelo.</p>
     <div class="int-grid">
-      <div class="int-chip int-chip-req">
-        <span class="int-chip-dot" style="background:#635BFF"></span>Stripe
-      </div>
-      <div class="int-chip int-chip-req">
-        <span class="int-chip-dot" style="background:#25D366"></span>WhatsApp
-      </div>
-      <div class="int-chip int-chip-req">
-        <span class="int-chip-dot" style="background:#10a37f"></span>OpenAI
-      </div>
-      <div class="int-chip int-chip-req">
-        <span class="int-chip-dot" style="background:#000"></span>Resend
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#3ECF8E"></span>Supabase
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#F22F46"></span>Twilio
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#34A853"></span>Google Sheets
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#7B61FF"></span>Railway
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#00BCFF"></span>MercadoPago
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#cc785c"></span>Anthropic
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#4285F4"></span>Google Drive
-      </div>
-      <div class="int-chip">
-        <span class="int-chip-dot" style="background:#7289DA"></span>Discord
-      </div>
-      <button class="int-more" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">
-        + Pedir integración →
-      </button>
+      <div class="int-chip int-chip-req"><span class="int-chip-dot" style="background:#635BFF"></span>Stripe</div>
+      <div class="int-chip int-chip-req"><span class="int-chip-dot" style="background:#25D366"></span>WhatsApp</div>
+      <div class="int-chip int-chip-req"><span class="int-chip-dot" style="background:#10a37f"></span>OpenAI</div>
+      <div class="int-chip int-chip-req"><span class="int-chip-dot" style="background:#000"></span>Resend</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#3ECF8E"></span>Supabase</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#F22F46"></span>Twilio</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#34A853"></span>Google Sheets</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#7B61FF"></span>Railway</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#00BCFF"></span>MercadoPago</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#cc785c"></span>Anthropic</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#4285F4"></span>Google Drive</div>
+      <div class="int-chip"><span class="int-chip-dot" style="background:#7289DA"></span>Discord</div>
+      <button class="int-more" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">+ Pedir integración →</button>
     </div>
   </div>
 </section>
 
-<!-- FLOW DIAGRAM -->
 <section class="flow">
   <div class="flow-inner">
     <p class="section-label" style="color:rgba(240,239,232,.25)">El flujo completo</p>
     <h2 class="flow-h2">Del HTML a la <em>URL en producción</em></h2>
     <div class="flow-track">
-      <div class="flow-node">
-        <div class="flow-arrow">→</div>
-        <div class="flow-node-icon">📄</div>
-        <div class="flow-node-title">Tu app</div>
-        <div class="flow-node-desc">HTML, JSX, Vue — lo que construiste con IA</div>
-        <span class="flow-node-tag tag-dim">Lo tienes</span>
-      </div>
-      <div class="flow-node">
-        <div class="flow-arrow">→</div>
-        <div class="flow-node-icon">🔍</div>
-        <div class="flow-node-title">Análisis</div>
-        <div class="flow-node-desc">Claude lee el código y detecta qué falta</div>
-        <span class="flow-node-tag tag-volt">IA</span>
-      </div>
-      <div class="flow-node">
-        <div class="flow-arrow">→</div>
-        <div class="flow-node-icon">🔌</div>
-        <div class="flow-node-title">Conexiones</div>
-        <div class="flow-node-desc">Wizard guiado para Stripe, WhatsApp, OpenAI</div>
-        <span class="flow-node-tag tag-volt">5 min</span>
-      </div>
-      <div class="flow-node">
-        <div class="flow-arrow">→</div>
-        <div class="flow-node-icon">⚡</div>
-        <div class="flow-node-title">Backend</div>
-        <div class="flow-node-desc">Node.js generado a medida con tus rutas</div>
-        <span class="flow-node-tag tag-volt">Automático</span>
-      </div>
-      <div class="flow-node">
-        <div class="flow-node-icon">🚀</div>
-        <div class="flow-node-title">Deploy</div>
-        <div class="flow-node-desc">URL con HTTPS en Railway en &lt; 2 min</div>
-        <span class="flow-node-tag tag-volt">En vivo</span>
-      </div>
+      <div class="flow-node"><div class="flow-arrow">→</div><div class="flow-node-icon">📄</div><div class="flow-node-title">Tu app</div><div class="flow-node-desc">HTML, JSX, Vue — lo que construiste con IA</div><span class="flow-node-tag tag-dim">Lo tienes</span></div>
+      <div class="flow-node"><div class="flow-arrow">→</div><div class="flow-node-icon">🔍</div><div class="flow-node-title">Análisis</div><div class="flow-node-desc">Claude lee el código y detecta qué falta</div><span class="flow-node-tag tag-volt">IA</span></div>
+      <div class="flow-node"><div class="flow-arrow">→</div><div class="flow-node-icon">🔌</div><div class="flow-node-title">Conexiones</div><div class="flow-node-desc">Wizard guiado para Stripe, WhatsApp, OpenAI</div><span class="flow-node-tag tag-volt">5 min</span></div>
+      <div class="flow-node"><div class="flow-arrow">→</div><div class="flow-node-icon">⚡</div><div class="flow-node-title">Backend</div><div class="flow-node-desc">Node.js generado a medida con tus rutas</div><span class="flow-node-tag tag-volt">Automático</span></div>
+      <div class="flow-node"><div class="flow-node-icon">🚀</div><div class="flow-node-title">Deploy</div><div class="flow-node-desc">URL con HTTPS en Railway en &lt; 2 min</div><span class="flow-node-tag tag-volt">En vivo</span></div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="pricing" id="precios">
   <div class="pricing-inner">
     <p class="section-label">Precios</p>
@@ -680,107 +289,45 @@ footer{
     <p class="pricing-sub">Sin tarjeta de crédito para empezar. Sin sorpresas.</p>
     <div class="plans">
       <div class="plan">
-        <p class="plan-name">Gratis</p>
-        <p class="plan-price">$0 <sub>/ mes</sub></p>
-        <p class="plan-desc">Para probar y lanzar tu primer producto</p>
+        <p class="plan-name">Gratis</p><p class="plan-price">$0 <sub>/ mes</sub></p><p class="plan-desc">Para probar y lanzar tu primer producto</p>
         <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li>3 integraciones conectadas</li>
-          <li>Análisis de app con IA</li>
-          <li>Generador de backend</li>
-          <li>1 deploy a Railway</li>
-          <li>Encriptación AES-256</li>
-        </ul>
+        <ul class="plan-features"><li>3 integraciones conectadas</li><li>Análisis de app con IA</li><li>Generador de backend</li><li>1 deploy a Railway</li><li>Encriptación AES-256</li></ul>
         <a href="#registro" class="plan-cta">Empezar gratis</a>
       </div>
       <div class="plan hero-plan">
         <span class="plan-badge">Más popular</span>
-        <p class="plan-name">Pro</p>
-        <p class="plan-price">$19 <sub>/ mes</sub></p>
-        <p class="plan-desc">Para builders que ya generan ingresos</p>
+        <p class="plan-name">Pro</p><p class="plan-price">$19 <sub>/ mes</sub></p><p class="plan-desc">Para builders que ya generan ingresos</p>
         <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li>Integraciones ilimitadas</li>
-          <li>Proyectos ilimitados</li>
-          <li>Deploys ilimitados</li>
-          <li>Soporte prioritario</li>
-          <li>Nuevas integraciones primero</li>
-          <li>Logs de actividad</li>
-        </ul>
+        <ul class="plan-features"><li>Integraciones ilimitadas</li><li>Proyectos ilimitados</li><li>Deploys ilimitados</li><li>Soporte prioritario</li><li>Nuevas integraciones primero</li><li>Logs de actividad</li></ul>
         <a href="#registro" class="plan-cta">Empezar con Pro</a>
       </div>
       <div class="plan">
-        <p class="plan-name">Agencia</p>
-        <p class="plan-price">$79 <sub>/ mes</sub></p>
-        <p class="plan-desc">Para equipos que lanzan varios productos</p>
+        <p class="plan-name">Agencia</p><p class="plan-price">$79 <sub>/ mes</sub></p><p class="plan-desc">Para equipos que lanzan varios productos</p>
         <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li>Todo de Pro</li>
-          <li>Hasta 10 miembros de equipo</li>
-          <li>Dashboard compartido</li>
-          <li>API de acceso para automatizar</li>
-          <li>Soporte con SLA</li>
-        </ul>
+        <ul class="plan-features"><li>Todo de Pro</li><li>Hasta 10 miembros de equipo</li><li>Dashboard compartido</li><li>API de acceso para automatizar</li><li>Soporte con SLA</li></ul>
         <a href="#registro" class="plan-cta">Contactar →</a>
       </div>
     </div>
     <div class="early-strip">
       <div class="early-strip-icon">🚀</div>
-      <div>
-        <h3>Fundadores early — Pro gratis para siempre <span class="spots-pill">67 cupos</span></h3>
-        <p>Los primeros 100 usuarios obtienen acceso Pro permanente sin costo. A cambio, feedback honesto.</p>
-      </div>
-      <a href="#registro" class="btn-volt" style="flex-shrink:0;font-size:.82rem;padding:.65rem 1.4rem">
-        Quiero mi cupo →
-      </a>
+      <div><h3>Fundadores early — Pro gratis para siempre <span class="spots-pill">67 cupos</span></h3><p>Los primeros 100 usuarios obtienen acceso Pro permanente sin costo. A cambio, feedback honesto.</p></div>
+      <a href="#registro" class="btn-volt" style="flex-shrink:0;font-size:.82rem;padding:.65rem 1.4rem">Quiero mi cupo →</a>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="test-inner">
     <p class="section-label">Lo que dicen los builders</p>
     <h2 class="test-h2">Gente real que lanzó con IntégraHub</h2>
     <div class="test-grid">
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"Llevaba 3 semanas intentando conectar Stripe. Con IntégraHub lo hice en <strong>12 minutos</strong>. Literalmente 12 minutos."</p>
-        <div class="test-author">
-          <div class="test-av" style="background:#c6ff00">AM</div>
-          <div>
-            <p class="test-name">Alejandro M.</p>
-            <p class="test-handle">Founder de AppTrack · Bogotá</p>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"El analizador detectó que me faltaban 4 integraciones que ni sabía que necesitaba. <strong>Me ahorró semanas</strong> de errores en producción."</p>
-        <div class="test-author">
-          <div class="test-av" style="background:#a8e000">SR</div>
-          <div>
-            <p class="test-name">Sofía R.</p>
-            <p class="test-handle">Indie hacker · Medellín</p>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"Hice mi app en Bolt en un fin de semana. El lunes la subí a producción con IntégraHub. <strong>Nunca había sido tan fácil.</strong>"</p>
-        <div class="test-author">
-          <div class="test-av" style="background:#c6ff00">JP</div>
-          <div>
-            <p class="test-name">Juan P.</p>
-            <p class="test-handle">Vibe coder · CDMX</p>
-          </div>
-        </div>
-      </div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><p class="test-quote">"Llevaba 3 semanas intentando conectar Stripe. Con IntégraHub lo hice en <strong>12 minutos</strong>. Literalmente 12 minutos."</p><div class="test-author"><div class="test-av" style="background:#c6ff00">AM</div><div><p class="test-name">Alejandro M.</p><p class="test-handle">Founder de AppTrack · Bogotá</p></div></div></div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><p class="test-quote">"El analizador detectó que me faltaban 4 integraciones que ni sabía que necesitaba. <strong>Me ahorró semanas</strong> de errores en producción."</p><div class="test-author"><div class="test-av" style="background:#a8e000">SR</div><div><p class="test-name">Sofía R.</p><p class="test-handle">Indie hacker · Medellín</p></div></div></div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><p class="test-quote">"Hice mi app en Bolt en un fin de semana. El lunes la subí a producción con IntégraHub. <strong>Nunca había sido tan fácil.</strong>"</p><div class="test-author"><div class="test-av" style="background:#c6ff00">JP</div><div><p class="test-name">Juan P.</p><p class="test-handle">Vibe coder · CDMX</p></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
 <section class="cta-section" id="registro">
   <div class="cta-grid"></div>
   <div class="cta-glow"></div>
@@ -796,7 +343,6 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">íntegra<b>hub</b></div>
   <div class="footer-links">
@@ -809,71 +355,58 @@ footer{
 </footer>
 
 <script>
-// ── Scroll reveal ────────────────────────────────────────
+const SUPABASE_URL  = 'https://ameubkwhvhywazxpeyay.supabase.co';
+const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE';
+
 const io = new IntersectionObserver(entries => {
   entries.forEach((e,i) => {
-    if(e.isIntersecting){
-      e.target.style.transitionDelay = (i * 0.08) + 's';
-      e.target.classList.add('in');
-    }
+    if(e.isIntersecting){ e.target.style.transitionDelay=(i*.08)+'s'; e.target.classList.add('in'); }
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.how-step').forEach(el => io.observe(el));
 
-// ── Signup ───────────────────────────────────────────────
-function signup(){function signup(){
+function signup(){
   const email = document.getElementById('emailInput').value.trim();
   const msg   = document.getElementById('ctaMsg');
   if(!email || !email.includes('@')){
-    document.getElementById('emailInput').style.outline = '2px solid rgba(255,79,109,.6)';
-    setTimeout(() => document.getElementById('emailInput').style.outline = '', 1500);
+    document.getElementById('emailInput').style.outline='2px solid rgba(255,79,109,.6)';
+    setTimeout(()=>document.getElementById('emailInput').style.outline='',1500);
     return;
   }
-  msg.textContent = '⏳ Guardando...';
-  msg.style.color = 'rgba(240,239,232,.5)';
+  msg.textContent='⏳ Guardando...';
+  msg.style.color='rgba(240,239,232,.5)';
 
-  fetch('https://ameubkwhvhywazxpeyay.supabase.co/rest/v1/waitlist', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE',
-      'Prefer': 'return=minimal'
+  fetch(SUPABASE_URL+'/rest/v1/waitlist',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization':'Bearer '+SUPABASE_KEY,
+      'Prefer':'return=minimal'
     },
     body: JSON.stringify({ email })
   })
   .then(res => {
-    if(res.ok || res.status === 409){
-      msg.textContent = res.status === 409
-        ? '✓ Ya estás en la lista — te avisamos pronto.'
-        : '✓ ¡Listo, ' + email + '! Te avisamos cuando tu cuenta esté activa.';
-      msg.style.color = 'var(--volt)';
-      document.getElementById('emailInput').value = '';
+    if(res.ok){
+      msg.textContent='✓ ¡Listo, '+email+'! Te avisamos cuando tu cuenta esté activa.';
+      msg.style.color='var(--volt)';
+      document.getElementById('emailInput').value='';
+    } else if(res.status===409){
+      msg.textContent='✓ Ya estás en la lista — te avisamos pronto.';
+      msg.style.color='var(--volt)';
     } else {
-      msg.textContent = 'Algo salió mal, intenta de nuevo.';
-      msg.style.color = '#ff4f6d';
+      msg.textContent='Algo salió mal, intenta de nuevo.';
+      msg.style.color='#ff4f6d';
     }
   })
-  .catch(() => {
-    msg.textContent = 'Error de conexión, intenta de nuevo.';
-    msg.style.color = '#ff4f6d';
+  .catch(()=>{
+    msg.textContent='Error de conexión, intenta de nuevo.';
+    msg.style.color='#ff4f6d';
   });
 }
-  const email = document.getElementById('emailInput').value.trim();
-  const msg   = document.getElementById('ctaMsg');
-  if(!email || !email.includes('@')){
-    document.getElementById('emailInput').style.outline = '2px solid rgba(255,79,109,.6)';
-    setTimeout(() => document.getElementById('emailInput').style.outline = '', 1500);
-    return;
-  }
-  msg.textContent = `✓ ¡Listo, ${email}! Te avisamos cuando tu cuenta esté activa.`;
-  msg.style.color = 'var(--volt)';
-  document.getElementById('emailInput').value = '';
-  // TODO: conectar con Supabase / Resend para guardar el email
-}
 
-document.getElementById('emailInput').addEventListener('keydown', e => {
-  if(e.key === 'Enter') signup();
+document.getElementById('emailInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter') signup();
 });
 </script>
 </body>
