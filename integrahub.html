@@ -375,8 +375,7 @@ function signup(){
   }
   msg.textContent='⏳ Guardando...';
   msg.style.color='rgba(240,239,232,.5)';
-
-  function signup(){
+function signup(){
   const email = document.getElementById('emailInput').value.trim();
   const msg   = document.getElementById('ctaMsg');
   if(!email || !email.includes('@')){
@@ -386,7 +385,6 @@ function signup(){
   }
   msg.textContent='⏳ Guardando...';
   msg.style.color='rgba(240,239,232,.5)';
-
   fetch(SUPABASE_URL+'/rest/v1/waitlist',{
     method:'POST',
     headers:{
@@ -399,7 +397,6 @@ function signup(){
   })
   .then(res=>{
     if(res.ok){
-      // Enviar email de bienvenida
       fetch(SUPABASE_URL+'/functions/v1/welcome-email',{
         method:'POST',
         headers:{
@@ -420,6 +417,10 @@ function signup(){
     }
   })
   .catch(()=>{
+    msg.textContent='Error de conexión, intenta de nuevo.';
+    msg.style.color='#ff4f6d';
+  });
+}
     msg.textContent='Error de conexión, intenta de nuevo.';
     msg.style.color='#ff4f6d';
   });
