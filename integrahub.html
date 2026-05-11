@@ -376,7 +376,54 @@ function signup(){
   msg.textContent='⏳ Guardando...';
   msg.style.color='rgba(240,239,232,.5)';
 
+  function signup(){
+  const email = document.getElementById('emailInput').value.trim();
+  const msg   = document.getElementById('ctaMsg');
+  if(!email || !email.includes('@')){
+    document.getElementById('emailInput').style.outline='2px solid rgba(255,79,109,.6)';
+    setTimeout(()=>document.getElementById('emailInput').style.outline='',1500);
+    return;
+  }
+  msg.textContent='⏳ Guardando...';
+  msg.style.color='rgba(240,239,232,.5)';
+
   fetch(SUPABASE_URL+'/rest/v1/waitlist',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'apikey':SUPABASE_KEY,
+      'Authorization':'Bearer '+SUPABASE_KEY,
+      'Prefer':'return=minimal'
+    },
+    body:JSON.stringify({email})
+  })
+  .then(res=>{
+    if(res.ok){
+      // Enviar email de bienvenida
+      fetch(SUPABASE_URL+'/functions/v1/welcome-email',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization':'Bearer '+SUPABASE_KEY,
+        },
+        body:JSON.stringify({email})
+      });
+      msg.textContent='✓ ¡Listo, '+email+'! Revisa tu correo — te enviamos un regalo 🎉';
+      msg.style.color='var(--volt)';
+      document.getElementById('emailInput').value='';
+    } else if(res.status===409){
+      msg.textContent='✓ Ya estás en la lista — te avisamos pronto.';
+      msg.style.color='var(--volt)';
+    } else {
+      msg.textContent='Algo salió mal, intenta de nuevo.';
+      msg.style.color='#ff4f6d';
+    }
+  })
+  .catch(()=>{
+    msg.textContent='Error de conexión, intenta de nuevo.';
+    msg.style.color='#ff4f6d';
+  });
+}
     method:'POST',
     headers:{
       'Content-Type':'application/json',
