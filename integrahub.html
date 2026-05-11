@@ -821,7 +821,44 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.how-step').forEach(el => io.observe(el));
 
 // ── Signup ───────────────────────────────────────────────
-function signup(){
+function signup(){function signup(){
+  const email = document.getElementById('emailInput').value.trim();
+  const msg   = document.getElementById('ctaMsg');
+  if(!email || !email.includes('@')){
+    document.getElementById('emailInput').style.outline = '2px solid rgba(255,79,109,.6)';
+    setTimeout(() => document.getElementById('emailInput').style.outline = '', 1500);
+    return;
+  }
+  msg.textContent = '⏳ Guardando...';
+  msg.style.color = 'rgba(240,239,232,.5)';
+
+  fetch('https://ameubkwhvhywazxpeyay.supabase.co/rest/v1/waitlist', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtZXVia3dodmh5d2F6eHBleWF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MjM2MTAsImV4cCI6MjA5NDA5OTYxMH0.mFc5Mk5IJ1uMlz4hLV2-is_SdlyOipAXI-0o6UHWbxE',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({ email })
+  })
+  .then(res => {
+    if(res.ok || res.status === 409){
+      msg.textContent = res.status === 409
+        ? '✓ Ya estás en la lista — te avisamos pronto.'
+        : '✓ ¡Listo, ' + email + '! Te avisamos cuando tu cuenta esté activa.';
+      msg.style.color = 'var(--volt)';
+      document.getElementById('emailInput').value = '';
+    } else {
+      msg.textContent = 'Algo salió mal, intenta de nuevo.';
+      msg.style.color = '#ff4f6d';
+    }
+  })
+  .catch(() => {
+    msg.textContent = 'Error de conexión, intenta de nuevo.';
+    msg.style.color = '#ff4f6d';
+  });
+}
   const email = document.getElementById('emailInput').value.trim();
   const msg   = document.getElementById('ctaMsg');
   if(!email || !email.includes('@')){
